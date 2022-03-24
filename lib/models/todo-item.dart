@@ -5,7 +5,7 @@ class TodoItem {
   String task;
   bool complete;
 
-  TodoItem({required this.id, required this.task, required this.complete});
+  TodoItem({this.id = -1, required this.task, required this.complete});
 
   @override
   Map<String, dynamic> toMap() {

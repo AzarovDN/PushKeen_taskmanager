@@ -1,6 +1,5 @@
 import 'package:sqflite/sqflite.dart' as sql;
 import 'package:flutter/foundation.dart';
-import 'package:taskmanager/models/todo-item.dart';
 
 
 class DB {
@@ -36,6 +35,7 @@ class DB {
   static Future<List<Map<String, dynamic>>> getItems() async {
     final db = await DB.db();
     return db.query('items', orderBy: "id");
+
   }
 
 
