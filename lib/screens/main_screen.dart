@@ -60,57 +60,55 @@ class MainScreen extends GetWidget<TaskController> {
                   ),
                 ),
                 Expanded(
-                  child: Container(
-                    child: ListView(
-                      padding: EdgeInsets.only(top: 12),
-                      children: controller.items
-                              .map(
-                                (item) => ListTile(
-                                  leading: Checkbox(
-                                    value: item.complete,
-                                    onChanged: (bool? value) {
-                                      controller.updateItem(item, value);
-                                    },
-                                    activeColor:
-                                        Theme.of(context).primaryColorDark,
-                                  ),
-                                  title: Text(
-                                    item.task,
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 18,
-                                    ),
-                                  ),
-                                ),
-                              )
-                              .toList() +
-                          [
-                            if (controller.isAddingItem.value)
-                              ListTile(
-                                title: TextField(
-                                  decoration: InputDecoration(
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            Theme.of(context).primaryColor,
-                                      ),
-                                    ),
-                                  ),
-                                  cursorColor:
-                                      Theme.of(context).primaryColor,
-                                  controller: textController,
-                                  onSubmitted: (String value) {
-                                    if (value != '') {
-                                      controller.createItem(value);
-                                    }
-                                    textController.clear();
-                                    controller.isAddingItem.toggle();
+                  child: ListView(
+                    padding:  const EdgeInsets.only(top: 12),
+                    children: controller.items
+                            .map(
+                              (item) => ListTile(
+                                leading: Checkbox(
+                                  value: item.complete,
+                                  onChanged: (bool? value) {
+                                    controller.updateItem(item, value);
                                   },
-                                  autofocus: true,
+                                  activeColor:
+                                      Theme.of(context).primaryColorDark,
                                 ),
-                              )
-                          ],
-                    ),
+                                title: Text(
+                                  item.task,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ),
+                            )
+                            .toList() +
+                        [
+                          if (controller.isAddingItem.value)
+                            ListTile(
+                              title: TextField(
+                                decoration: InputDecoration(
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color:
+                                          Theme.of(context).primaryColor,
+                                    ),
+                                  ),
+                                ),
+                                cursorColor:
+                                    Theme.of(context).primaryColor,
+                                controller: textController,
+                                onSubmitted: (String value) {
+                                  if (value != '') {
+                                    controller.createItem(value);
+                                  }
+                                  textController.clear();
+                                  controller.isAddingItem.toggle();
+                                },
+                                autofocus: true,
+                              ),
+                            )
+                        ],
                   ),
                 ),
               ],

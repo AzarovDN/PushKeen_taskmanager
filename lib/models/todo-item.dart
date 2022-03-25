@@ -7,7 +7,6 @@ class TodoItem {
 
   TodoItem({this.id = -1, required this.task, required this.complete});
 
-  @override
   Map<String, dynamic> toMap() {
     Map<String, dynamic> map = {
       'id': id,

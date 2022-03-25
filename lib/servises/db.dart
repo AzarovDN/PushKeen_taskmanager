@@ -31,22 +31,17 @@ class DB {
     return id;
   }
 
-  // Read all items (journals)
   static Future<List<Map<String, dynamic>>> getItems() async {
     final db = await DB.db();
     return db.query('items', orderBy: "id");
 
   }
 
-
-  // Read a single item by id
-  // The app doesn't use this method but I put here in case you want to see it
   static Future<List<Map<String, dynamic>>> getItem(int id) async {
     final db = await DB.db();
     return db.query('items', where: "id = ?", whereArgs: [id], limit: 1);
   }
 
-  // Update an item by id
   static Future<int> updateItem(
       int id, String task, bool complete) async {
     final db = await DB.db();
@@ -61,7 +56,6 @@ class DB {
     return result;
   }
 
-  // Delete
   static Future<void> deleteItem(int id) async {
     final db = await DB.db();
     try {
