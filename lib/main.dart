@@ -1,7 +1,50 @@
 import 'package:flutter/material.dart';
-import 'package:taskmanager/main_screen.dart';
-import 'package:taskmanager/task_controller.dart';
+import 'package:taskmanager/screens/main_screen.dart';
+import 'package:taskmanager/controllers/task_controller.dart';
 import 'package:get/get.dart';
+
+ThemeData lightTheme(BuildContext context) {
+  return ThemeData(
+    brightness: Brightness.light,
+    primaryColor: Colors.black,
+    primaryColorLight: const Color(0xffEBEBEB),
+    primaryColorDark: const Color(0xff575767),
+    scaffoldBackgroundColor: const Color(0xffFFFFFF),
+    canvasColor: const Color(0xffF2F3FF),
+    fontFamily: 'Inter',
+    checkboxTheme: CheckboxThemeData(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5),
+      ),
+    ),
+    textTheme: Theme.of(context).textTheme.apply(
+          bodyColor: const Color(0xff000000),
+          displayColor: const Color(0xff000000),
+        ),
+  );
+}
+
+ThemeData darkTheme(BuildContext context) {
+  return ThemeData(
+    brightness: Brightness.dark,
+    primaryColor: Colors.white,
+    primaryColorLight: const Color(0xff29292F),
+    primaryColorDark: const Color(0xff575767),
+    scaffoldBackgroundColor: const Color(0xff1E1F25),
+    canvasColor: const Color(0xff24242D),
+    fontFamily: 'Inter',
+    checkboxTheme: CheckboxThemeData(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5),
+      ),
+    ),
+
+    textTheme: Theme.of(context).textTheme.apply(
+      bodyColor: const Color(0xffFFFFFF),
+      displayColor: const Color(0xffFFFFFF),
+    ),
+  );
+}
 
 void main() {
   runApp(const MyApp());
@@ -17,23 +60,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-        checkboxTheme: CheckboxThemeData(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(5),
-          ),
-        ),
-      ),
+      theme: lightTheme(context),
+      darkTheme: darkTheme(context),
+      themeMode: ThemeMode.system,
       home: const MainScreen(),
     );
   }
